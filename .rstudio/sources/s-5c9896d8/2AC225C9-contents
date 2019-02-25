@@ -1,0 +1,71 @@
+#install.packages("tm")
+#install.packages("SnowballC")
+#install.packages("wordcloud")
+#install.packages("RColorBrewer")
+# install.packages("foreach")
+# install.packages("doParallel")
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+library("foreach")
+library("doParallel")
+
+
+# filePath <- "/home/rstudio/romeo.txt"
+filePath <- "/home/rstudio/text4analyse.txt"
+
+print(getwd())
+text <- readLines(filePath)
+docs <- Corpus(VectorSource(text))
+
+#inspect(docs)
+
+toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+docs <- tm_map(docs, toSpace, "/")
+docs <- tm_map(docs, toSpace, "@")
+docs <- tm_map(docs, toSpace, "\\|")
+
+# Convert the text to lower case
+docs <- tm_map(docs, content_transformer(tolower))
+# Remove numbers
+docs <- tm_map(docs, removeNumbers)
+# Remove english common stopwords
+docs <- tm_map(docs, removeWords, stopwords("english"))
+# Remove your own stop word
+# specify your stopwords as a character vector
+docs <- tm_map(docs, removeWords, c("blabla1", "blabla2")) 
+# Remove punctuations
+docs <- tm_map(docs, removePunctuation)
+# Eliminate extra white spaces
+docs <- tm_map(docs, stripWhitespace)
+# Text stemming
+docs <- tm_map(docs, stemDocument)
+
+
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+#setup parallel backend to use 8 processors
+cl<-makeCluster(4)
+registerDoParallel(cl)
+
+
+top_words <- head(d,30)
+for (i in 1:length(top_words$word)){
+  needle_word = String(top_words$word[i])
+  assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+  if (length(assoc_words[[needle_word]])>=1){
+    print(paste('Связи для слова: ',needle_word, sep = ''))
+    print(assoc_words[[needle_word]])
+  }
+}
+
+
+#png("MachineLearningCloud.png", width=12, height=8, units="in", res=300)
+wordcloud_image <- wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+                             max.words=200, random.order=FALSE, rot.per=0.35, 
+                             colors=brewer.pal(8, "Dark2"))
+#dev.off()

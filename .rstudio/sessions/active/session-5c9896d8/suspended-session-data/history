@@ -1,0 +1,512 @@
+d <- data.frame(word = names(v),freq=v)
+head(d, 30)
+findAssocs(dtm, terms = "музей", corlimit = 0.1)
+#png("MachineLearningCloud.png", width=12, height=8, units="in", res=300)
+wordcloud_image <- wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+max.words=200, random.order=FALSE, rot.per=0.35,
+colors=brewer.pal(8, "Dark2"))
+findAssocs(dtm, terms = "romeo", corlimit = 0.1)
+findAssocs(dtm, terms = "romeo", corlimit = 0.9)
+findAssocs(dtm, terms = "romeo", corlimit = 0.01)
+head(d, 30)
+typeof(head(d, 30))
+apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+a <- apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+a <- as.data.frame(apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01)))
+assoc_words
+top_words <- head(d,30)
+for (i in c(1:length(top_words)){
+assoc_words <- findAssocs(dtm, terms = , corlimit = 0.01)
+if(length(assoc_words)>=1){
+assoc_words
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = top_words[i] , corlimit = 0.01)
+if(length(assoc_words)>=1){
+assoc_words
+}
+}
+top_words[1]
+top_words[:1]
+top_words[1,]
+top_words[1,2]
+top_words[1,1]
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = top_words[1,1] , corlimit = 0.01)
+if(length(assoc_words)>=1){
+assoc_words
+}
+}
+typeof(top_words[1,1])
+top_words[1,1]
+top_words[1,1]$1
+String(top_words[1,1])
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[1,1]) , corlimit = 0.01)
+if(length(assoc_words)>=1){
+assoc_words
+}
+}
+print(assoc_words)
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[1,1]) , corlimit = 0.01)
+if(length(assoc_words)>=1){
+print(assoc_words)
+}
+}
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+if(length(assoc_words)>=1){
+print(assoc_words)
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+if(length(assoc_words)>=1){
+return(assoc_words)
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+if(length(assoc_words)>=1){
+print(assoc_words)
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.05)
+if(length(assoc_words)>=1){
+print(assoc_words)
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+if(length(assoc_words)>=1){
+print(assoc_words)
+}
+}
+findAssocs(dtm, terms = "juliet" , corlimit = 0.0005)
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10]
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[[1:10]]
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1,10]
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10,]
+findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10]
+type(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+lapply(typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005)), "[", c(1:7))
+typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:7))
+lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+print(length(assoc_words))
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+print(length(assoc_words))
+#if(length(assoc_words)>=1){
+#  print(assoc_words)
+#}
+}
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+print(length(assoc_words))
+#if(length(assoc_words)>=1){
+#  print(assoc_words)
+#}
+}
+lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+h <- lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+typeof(h)
+typeof(h$juliet)
+length(h$juliet)
+if(length(assoc_words$String(top_words[i,1]))>=1){
+print(assoc_words)
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+print(length(assoc_words))
+if(length(assoc_words$String(top_words[i,1]))>=1){
+print(assoc_words)
+}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+needle_word <- String(top_words[i,1])
+assoc_words <- findAssocs(dtm, terms = needle_word , corlimit = 0.0005)
+print(length(assoc_words))
+if(length(assoc_words$needle_word)) {
+print(assoc_words)
+}
+}
+length(h$jfjfj)
+length(h$juliet)
+length(h$[juliet])
+length(h$[juliet])
+length(h$[jfjfj])
+length(h${jfjfj})
+length(h[1])
+length(h[0])
+length(h[:])
+length(h[,])
+length(h[[;]])
+length(h[[:]])
+length(h[1])
+length(h$juliet)
+h$juliet
+h[1]
+h[[jfjfj]]
+jfjfj <- 'juliet'
+h[[jfjfj]]
+for (i in c(1:length(top_words))){
+needle_word <- String(top_words[i,1])
+assoc_words <- findAssocs(dtm, terms = needle_word , corlimit = 0.0005)
+if(length(assoc_words[[needle_word]])) {
+print(assoc_words)
+}
+}
+for (i in c(1:length(top_words))){
+needle_word <- String(top_words[i,1])
+assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+top_words <- head(d,30)
+for (i in c(1:length(top_words))){
+needle_word <- String(top_words[i,1])
+print(needle_word)
+assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+c(1:length(top_words))
+library(foreach)
+#install.packages("tm")
+#install.packages("SnowballC")
+#install.packages("wordcloud")
+#install.packages("RColorBrewer")
+install.packages("foreach")
+library("tm")
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+library("foreach")
+a <- apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+ls<-foreach(icount(top_words)) {
+print(to.ls)
+}
+top_words <- head(d,30)
+ls<-foreach(icount(top_words)){
+print(to.ls)
+}
+library("doParallel")
+install.packages("doParallel")
+library("doParallel")
+#setup parallel backend to use 8 processors
+cl<-makeCluster(4)
+registerDoParallel(cl)
+top_words <- head(d,30)
+ls<-foreach(icount(top_words)) %dopar% {
+print(to.ls)
+}
+top_words
+ls<-foreach(top_words) %dopar% {
+print(to.ls)
+}
+print(to)
+print(ls)
+top_words <- head(d,30)
+ls<-foreach(top_words) %dopar% {
+print(ls)
+}
+top_words <- head(d,30)
+ls<-foreach(top_words) %dopar% {
+print(ls)
+}
+print(ls)
+ls
+ls<-foreach(top_words) %dopar% {
+ls
+}
+ls<-foreach(top_words) %dopar% {
+ls.print()
+}
+top_words$word
+ls<-foreach(top_words$word) %dopar% {
+ls.print()
+}
+ls.out
+ls<-foreach(top_words$word) %dopar% {
+ls
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[i])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[i,0])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[[i,0]])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[[i,0]])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+i,0
+for (i in 1:length(top_words$word)){
+print(top_words$word[i,0])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[i])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[[i,1]])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[i,1])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(top_words$word[i][1])
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(String(top_words$word[i][1]))
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+print(String(top_words$word[i]))
+# needle_word <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+#  <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words[[needle_word]])) {
+#  print(assoc_words)
+#}
+}
+print(assoc_words)
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+print(assoc_words[[needle_word]])
+#  <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words)) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+print(length(assoc_words[[needle_word]]))
+#  <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words)) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.3)
+print(length(assoc_words[[needle_word]]))
+#  <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words)) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.1)
+print(length(assoc_words[[needle_word]]))
+#  <- String(top_words[i,1])
+# print(needle_word)
+# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+# print(assoc_words)
+#if(length(assoc_words)) {
+#  print(assoc_words)
+#}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>2){
+print(assoc_words[[needle_word]])
+}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>=1){
+print(assoc_words[[needle_word]])
+}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>=1){
+print('Связи для слова: '&needle_word&'\n')
+print(assoc_words[[needle_word]])
+}
+}
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>=1){
+print(paste('Связи для слова: ',needle_word, '\n', sep = ''))
+print(assoc_words[[needle_word]])
+}
+}
+# filePath <- "/home/rstudio/romeo.txt"
+filePath <- "/home/rstudio/text4analyse.txt"
+print(getwd())
+text <- readLines(filePath)
+docs <- Corpus(VectorSource(text))
+toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+docs <- tm_map(docs, toSpace, "/")
+docs <- tm_map(docs, toSpace, "@")
+docs <- tm_map(docs, toSpace, "\\|")
+# Convert the text to lower case
+docs <- tm_map(docs, content_transformer(tolower))
+# Remove numbers
+docs <- tm_map(docs, removeNumbers)
+# Remove english common stopwords
+docs <- tm_map(docs, removeWords, stopwords("english"))
+# Remove your own stop word
+# specify your stopwords as a character vector
+docs <- tm_map(docs, removeWords, c("blabla1", "blabla2"))
+# Remove punctuations
+docs <- tm_map(docs, removePunctuation)
+# Eliminate extra white spaces
+docs <- tm_map(docs, stripWhitespace)
+# Text stemming
+docs <- tm_map(docs, stemDocument)
+dtm <- TermDocumentMatrix(docs)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+#setup parallel backend to use 8 processors
+cl<-makeCluster(4)
+registerDoParallel(cl)
+top_words <- head(d,30)
+ls<-foreach(top_words$word) %dopar% {
+ls
+}
+top_words <- head(d,30)
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>=1){
+print(paste('Связи для слова: ',needle_word, sep = ''))
+print(assoc_words[[needle_word]])
+}
+}
+top_words <- head(d,30)
+for (i in 1:length(top_words$word)){
+needle_word = String(top_words$word[i])
+assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+if (length(assoc_words[[needle_word]])>=1){
+print(paste('Связи для слова: ',needle_word, sep = ''))
+print(assoc_words[[needle_word]])
+}
+}
+#png("MachineLearningCloud.png", width=12, height=8, units="in", res=300)
+wordcloud_image <- wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+max.words=200, random.order=FALSE, rot.per=0.35,
+colors=brewer.pal(8, "Dark2"))

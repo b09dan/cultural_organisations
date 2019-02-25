@@ -1,0 +1,565 @@
+1513882816496:install.packages("tm")
+1513884274405:install.packages("SnowballC")
+1513884318578:install.packages("wordcloud")
+1513884326536:install.packages("RColorBrewer")
+1513884333339:library("tm")
+1513884334196:#install.packages("tm")
+1513884334197:#install.packages("SnowballC")
+1513884334198:#install.packages("wordcloud")
+1513884334198:#install.packages("RColorBrewer")
+1513884334199:library("SnowballC")
+1513884334382:library("wordcloud")
+1513884335722:library("RColorBrewer")
+1513884339720:filePath <- "/home/rstudio/romeo.txt"
+1513884342465:print(getwd())
+1513884342652:text <- readLines(filePath)
+1513885758536:#install.packages("tm")
+1513885758537:#install.packages("SnowballC")
+1513885758538:#install.packages("wordcloud")
+1513885758538:#install.packages("RColorBrewer")
+1513885758538:library("tm")
+1513885758958:library("SnowballC")
+1513885759380:library("wordcloud")
+1513885760336:library("RColorBrewer")
+1513885760795:filePath <- "/home/rstudio/romeo.txt"
+1513885761648:print(getwd())
+1513885762335:text <- readLines(filePath)
+1513885762605:docs <- Corpus(VectorSource(text))
+1513886402111:filePath <- "/home/rstudio/romeo.txt"
+1513886403129:print(getwd())
+1513886403835:text <- readLines(filePath)
+1513886404437:docs <- Corpus(VectorSource(text))
+1513886404980:toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+1513886404982:docs <- tm_map(docs, toSpace, "/")
+1513886405470:docs <- tm_map(docs, toSpace, "@")
+1513886405957:docs <- tm_map(docs, toSpace, "\\|")
+1513886406452:# Convert the text to lower case
+1513886406453:docs <- tm_map(docs, content_transformer(tolower))
+1513886406930:# Remove numbers
+1513886406930:docs <- tm_map(docs, removeNumbers)
+1513886407443:# Remove english common stopwords
+1513886407443:docs <- tm_map(docs, removeWords, stopwords("english"))
+1513886407928:# Remove your own stop word
+1513886407928:# specify your stopwords as a character vector
+1513886407929:docs <- tm_map(docs, removeWords, c("blabla1", "blabla2"))
+1513886408404:# Remove punctuations
+1513886408404:docs <- tm_map(docs, removePunctuation)
+1513886408885:# Eliminate extra white spaces
+1513886408886:docs <- tm_map(docs, stripWhitespace)
+1513886409380:# Text stemming
+1513886409381:docs <- tm_map(docs, stemDocument)
+1513886409518:dtm <- TermDocumentMatrix(docs)
+1513886411052:m <- as.matrix(dtm)
+1513886411253:v <- sort(rowSums(m),decreasing=TRUE)
+1513886412554:d <- data.frame(word = names(v),freq=v)
+1513886413884:head(d, 30)
+1513886420843:findAssocs(dtm, terms = "музей", corlimit = 0.1)
+1513886421240:#png("MachineLearningCloud.png", width=12, height=8, units="in", res=300)
+1513886421241:wordcloud_image <- wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+1513886421242:max.words=200, random.order=FALSE, rot.per=0.35,
+1513886421243:colors=brewer.pal(8, "Dark2"))
+1513886433551:findAssocs(dtm, terms = "romeo", corlimit = 0.1)
+1513886460687:findAssocs(dtm, terms = "romeo", corlimit = 0.9)
+1513886465629:findAssocs(dtm, terms = "romeo", corlimit = 0.01)
+1513886502515:head(d, 30)
+1513886511686:typeof(head(d, 30))
+1513886670558:apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+1513886716050:a <- apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+1513886747935:a <- as.data.frame(apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01)))
+1513886912772:assoc_words
+1513886915786:top_words <- head(d,30)
+1513886915787:for (i in c(1:length(top_words)){
+1513886915788:assoc_words <- findAssocs(dtm, terms = , corlimit = 0.01)
+1513886915790:if(length(assoc_words)>=1){
+1513886915791:assoc_words
+1513886915791:}
+1513886915792:}
+1513886949361:top_words <- head(d,30)
+1513886949363:for (i in c(1:length(top_words))){
+1513886949364:assoc_words <- findAssocs(dtm, terms = top_words[i] , corlimit = 0.01)
+1513886949365:if(length(assoc_words)>=1){
+1513886949365:assoc_words
+1513886949366:}
+1513886949367:}
+1513886965499:top_words[1]
+1513886975598:top_words[:1]
+1513886980533:top_words[1,]
+1513886988077:top_words[1,2]
+1513886990987:top_words[1,1]
+1513887021909:top_words <- head(d,30)
+1513887021910:for (i in c(1:length(top_words))){
+1513887021911:assoc_words <- findAssocs(dtm, terms = top_words[1,1] , corlimit = 0.01)
+1513887021912:if(length(assoc_words)>=1){
+1513887021912:assoc_words
+1513887021913:}
+1513887021914:}
+1513887068704:typeof(top_words[1,1])
+1513887071513:top_words[1,1]
+1513887077863:top_words[1,1]$1
+1513887094059:String(top_words[1,1])
+1513887110258:top_words <- head(d,30)
+1513887110259:for (i in c(1:length(top_words))){
+1513887110260:assoc_words <- findAssocs(dtm, terms = String(top_words[1,1]) , corlimit = 0.01)
+1513887110261:if(length(assoc_words)>=1){
+1513887110261:assoc_words
+1513887110262:}
+1513887110263:}
+1513887131066:print(assoc_words)
+1513887134651:top_words <- head(d,30)
+1513887134652:for (i in c(1:length(top_words))){
+1513887134653:assoc_words <- findAssocs(dtm, terms = String(top_words[1,1]) , corlimit = 0.01)
+1513887134654:if(length(assoc_words)>=1){
+1513887134655:print(assoc_words)
+1513887134656:}
+1513887134656:}
+1513887153586:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+1513887156862:top_words <- head(d,30)
+1513887156863:for (i in c(1:length(top_words))){
+1513887156864:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+1513887156864:if(length(assoc_words)>=1){
+1513887156865:print(assoc_words)
+1513887156865:}
+1513887156866:}
+1513887182616:top_words <- head(d,30)
+1513887182617:for (i in c(1:length(top_words))){
+1513887182618:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+1513887182618:if(length(assoc_words)>=1){
+1513887182619:return(assoc_words)
+1513887182619:}
+1513887182620:}
+1513887194156:top_words <- head(d,30)
+1513887194157:for (i in c(1:length(top_words))){
+1513887194158:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.01)
+1513887194158:if(length(assoc_words)>=1){
+1513887194159:print(assoc_words)
+1513887194159:}
+1513887194160:}
+1513887220616:top_words <- head(d,30)
+1513887220617:for (i in c(1:length(top_words))){
+1513887220618:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.05)
+1513887220619:if(length(assoc_words)>=1){
+1513887220619:print(assoc_words)
+1513887220620:}
+1513887220621:}
+1513887231952:top_words <- head(d,30)
+1513887231953:for (i in c(1:length(top_words))){
+1513887231953:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+1513887231954:if(length(assoc_words)>=1){
+1513887231954:print(assoc_words)
+1513887231955:}
+1513887231955:}
+1513887282412:findAssocs(dtm, terms = "juliet" , corlimit = 0.0005)
+1513887291741:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)
+1513887479705:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10]
+1513887496292:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[[1:10]]
+1513887504877:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1,10]
+1513887516317:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10,]
+1513887523449:findAssocs(dtm, terms = "juliet" , corlimit = 0.005)[1:10]
+1513887531373:type(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+1513887536123:typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+1513887612447:lapply(typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005)), "[", c(1:7))
+1513887641893:typeof(findAssocs(dtm, terms = "juliet" , corlimit = 0.005))
+1513887655323:lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:7))
+1513887663674:lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+1513888375234:print(length(assoc_words))
+1513888380102:for (i in c(1:length(top_words))){
+1513888380102:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+1513888380103:print(length(assoc_words))
+1513888380104:#if(length(assoc_words)>=1){
+1513888380105:#  print(assoc_words)
+1513888380105:#}
+1513888380106:}
+1513888499317:for (i in c(1:length(top_words))){
+1513888499317:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+1513888499318:print(length(assoc_words))
+1513888499319:#if(length(assoc_words)>=1){
+1513888499319:#  print(assoc_words)
+1513888499320:#}
+1513888499320:}
+1513888548793:lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+1513888571700:h <- lapply(findAssocs(dtm, terms = "juliet" , corlimit = 0.005), "[", c(1:10))
+1513888843797:typeof(h)
+1513888870017:typeof(h$juliet)
+1513888876334:length(h$juliet)
+1513888926485:if(length(assoc_words$String(top_words[i,1]))>=1){
+1513888926486:print(assoc_words)
+1513888926486:}
+1513888929314:top_words <- head(d,30)
+1513888929315:for (i in c(1:length(top_words))){
+1513888929316:assoc_words <- findAssocs(dtm, terms = String(top_words[i,1]) , corlimit = 0.0005)
+1513888929316:print(length(assoc_words))
+1513888929317:if(length(assoc_words$String(top_words[i,1]))>=1){
+1513888929317:print(assoc_words)
+1513888929318:}
+1513888929318:}
+1513888990211:top_words <- head(d,30)
+1513888990212:for (i in c(1:length(top_words))){
+1513888990213:needle_word <- String(top_words[i,1])
+1513888990213:assoc_words <- findAssocs(dtm, terms = needle_word , corlimit = 0.0005)
+1513888990214:print(length(assoc_words))
+1513888990214:if(length(assoc_words$needle_word)) {
+1513888990215:print(assoc_words)
+1513888990216:}
+1513888990216:}
+1513889023598:length(h$jfjfj)
+1513889030943:length(h$juliet)
+1513889037183:length(h$[juliet])
+1513889039999:length(h$[juliet])
+1513889045506:length(h$[jfjfj])
+1513889068454:length(h${jfjfj})
+1513889125055:length(h[1])
+1513889131132:length(h[0])
+1513889134079:length(h[:])
+1513889136561:length(h[,])
+1513889143934:length(h[[;]])
+1513889147749:length(h[[:]])
+1513889156503:length(h[1])
+1513889167033:length(h$juliet)
+1513889174181:h$juliet
+1513889179741:h[1]
+1513889248447:h[[jfjfj]]
+1513889251376:jfjfj <- 'juliet'
+1513889251610:h[[jfjfj]]
+1513889284911:for (i in c(1:length(top_words))){
+1513889284912:needle_word <- String(top_words[i,1])
+1513889284913:assoc_words <- findAssocs(dtm, terms = needle_word , corlimit = 0.0005)
+1513889284914:if(length(assoc_words[[needle_word]])) {
+1513889284915:print(assoc_words)
+1513889284916:}
+1513889284916:}
+1513889353446:for (i in c(1:length(top_words))){
+1513889353448:needle_word <- String(top_words[i,1])
+1513889353448:assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513889353449:print(assoc_words)
+1513889353450:#if(length(assoc_words[[needle_word]])) {
+1513889353451:#  print(assoc_words)
+1513889353451:#}
+1513889353452:}
+1513889373352:top_words <- head(d,30)
+1513889373354:for (i in c(1:length(top_words))){
+1513889373354:needle_word <- String(top_words[i,1])
+1513889373355:print(needle_word)
+1513889373356:assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513889373357:print(assoc_words)
+1513889373357:#if(length(assoc_words[[needle_word]])) {
+1513889373358:#  print(assoc_words)
+1513889373359:#}
+1513889373360:}
+1513889386950:c(1:length(top_words))
+1513889500889:library(foreach)
+1513889535690:#install.packages("tm")
+1513889535691:#install.packages("SnowballC")
+1513889535692:#install.packages("wordcloud")
+1513889535693:#install.packages("RColorBrewer")
+1513889535693:install.packages("foreach")
+1513889760851:library("tm")
+1513889761024:library("SnowballC")
+1513889761190:library("wordcloud")
+1513889761650:library("RColorBrewer")
+1513889762114:library("foreach")
+1513889809886:a <- apply(head(d,30),2,function(x) findAssocs(dtm, terms = x, corlimit = 0.01))
+1513889920484:ls<-foreach(icount(top_words)) {
+1513889920485:print(to.ls)
+1513889920487:}
+1513889936190:top_words <- head(d,30)
+1513889936192:ls<-foreach(icount(top_words)){
+1513889936193:print(to.ls)
+1513889936196:}
+1513890364802:library("doParallel")
+1513890389613:install.packages("doParallel")
+1513890425772:library("doParallel")
+1513890574777:#setup parallel backend to use 8 processors
+1513890574778:cl<-makeCluster(4)
+1513890578485:registerDoParallel(cl)
+1513890583219:top_words <- head(d,30)
+1513890586656:ls<-foreach(icount(top_words)) %dopar% {
+1513890586657:print(to.ls)
+1513890586658:}
+1513890603449:top_words
+1513891055891:ls<-foreach(top_words) %dopar% {
+1513891055892:print(to.ls)
+1513891055892:}
+1513891063555:print(to)
+1513891068286:print(ls)
+1513891075002:top_words <- head(d,30)
+1513891075003:ls<-foreach(top_words) %dopar% {
+1513891075004:print(ls)
+1513891075005:}
+1513891078618:top_words <- head(d,30)
+1513891078619:ls<-foreach(top_words) %dopar% {
+1513891078620:print(ls)
+1513891078620:}
+1513891081256:print(ls)
+1513891100734:ls
+1513891103756:ls<-foreach(top_words) %dopar% {
+1513891103757:ls
+1513891103758:}
+1513891112697:ls<-foreach(top_words) %dopar% {
+1513891112698:ls.print()
+1513891112698:}
+1513891126390:top_words$word
+1513891190173:ls<-foreach(top_words$word) %dopar% {
+1513891190174:ls.print()
+1513891190175:}
+1513891204330:ls.out
+1513891210726:ls<-foreach(top_words$word) %dopar% {
+1513891210726:ls
+1513891210727:}
+1513892016795:for (i in 1:length(top_words$word)){
+1513892016796:print(top_words$word[i])
+1513892016797:# needle_word <- String(top_words[i,1])
+1513892016797:# print(needle_word)
+1513892016798:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892016798:# print(assoc_words)
+1513892016799:#if(length(assoc_words[[needle_word]])) {
+1513892016799:#  print(assoc_words)
+1513892016800:#}
+1513892016800:}
+1513892029264:for (i in 1:length(top_words$word)){
+1513892029265:print(top_words$word[i,0])
+1513892029266:# needle_word <- String(top_words[i,1])
+1513892029266:# print(needle_word)
+1513892029267:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892029267:# print(assoc_words)
+1513892029268:#if(length(assoc_words[[needle_word]])) {
+1513892029269:#  print(assoc_words)
+1513892029269:#}
+1513892029270:}
+1513892050146:for (i in 1:length(top_words$word)){
+1513892050147:print(top_words$word[[i,0]])
+1513892050148:# needle_word <- String(top_words[i,1])
+1513892050148:# print(needle_word)
+1513892050149:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892050150:# print(assoc_words)
+1513892050151:#if(length(assoc_words[[needle_word]])) {
+1513892050151:#  print(assoc_words)
+1513892050152:#}
+1513892050153:}
+1513892053198:for (i in 1:length(top_words$word)){
+1513892053199:print(top_words$word[[i,0]])
+1513892053200:# needle_word <- String(top_words[i,1])
+1513892053200:# print(needle_word)
+1513892053201:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892053201:# print(assoc_words)
+1513892053202:#if(length(assoc_words[[needle_word]])) {
+1513892053202:#  print(assoc_words)
+1513892053203:#}
+1513892053203:}
+1513892058369:i,0
+1513892063479:for (i in 1:length(top_words$word)){
+1513892063480:print(top_words$word[i,0])
+1513892063481:# needle_word <- String(top_words[i,1])
+1513892063481:# print(needle_word)
+1513892063482:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892063482:# print(assoc_words)
+1513892063483:#if(length(assoc_words[[needle_word]])) {
+1513892063483:#  print(assoc_words)
+1513892063484:#}
+1513892063485:}
+1513892071335:for (i in 1:length(top_words$word)){
+1513892071336:print(top_words$word[i])
+1513892071336:# needle_word <- String(top_words[i,1])
+1513892071337:# print(needle_word)
+1513892071338:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892071339:# print(assoc_words)
+1513892071339:#if(length(assoc_words[[needle_word]])) {
+1513892071340:#  print(assoc_words)
+1513892071341:#}
+1513892071342:}
+1513892092957:for (i in 1:length(top_words$word)){
+1513892092958:print(top_words$word[[i,1]])
+1513892092959:# needle_word <- String(top_words[i,1])
+1513892092961:# print(needle_word)
+1513892092962:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892092963:# print(assoc_words)
+1513892092964:#if(length(assoc_words[[needle_word]])) {
+1513892092966:#  print(assoc_words)
+1513892092967:#}
+1513892092968:}
+1513892105540:for (i in 1:length(top_words$word)){
+1513892105541:print(top_words$word[i,1])
+1513892105542:# needle_word <- String(top_words[i,1])
+1513892105543:# print(needle_word)
+1513892105544:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892105545:# print(assoc_words)
+1513892105545:#if(length(assoc_words[[needle_word]])) {
+1513892105546:#  print(assoc_words)
+1513892105547:#}
+1513892105548:}
+1513892115026:for (i in 1:length(top_words$word)){
+1513892115027:print(top_words$word[i][1])
+1513892115027:# needle_word <- String(top_words[i,1])
+1513892115028:# print(needle_word)
+1513892115029:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892115029:# print(assoc_words)
+1513892115030:#if(length(assoc_words[[needle_word]])) {
+1513892115030:#  print(assoc_words)
+1513892115031:#}
+1513892115031:}
+1513892152511:for (i in 1:length(top_words$word)){
+1513892152512:print(String(top_words$word[i][1]))
+1513892152513:# needle_word <- String(top_words[i,1])
+1513892152514:# print(needle_word)
+1513892152515:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892152515:# print(assoc_words)
+1513892152516:#if(length(assoc_words[[needle_word]])) {
+1513892152517:#  print(assoc_words)
+1513892152518:#}
+1513892152519:}
+1513892181299:for (i in 1:length(top_words$word)){
+1513892181300:print(String(top_words$word[i]))
+1513892181301:# needle_word <- String(top_words[i,1])
+1513892181301:# print(needle_word)
+1513892181302:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892181303:# print(assoc_words)
+1513892181303:#if(length(assoc_words[[needle_word]])) {
+1513892181304:#  print(assoc_words)
+1513892181304:#}
+1513892181305:}
+1513892205697:for (i in 1:length(top_words$word)){
+1513892205699:needle_word = String(top_words$word[i])
+1513892205699:findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+1513892205700:#  <- String(top_words[i,1])
+1513892205701:# print(needle_word)
+1513892205701:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892205702:# print(assoc_words)
+1513892205702:#if(length(assoc_words[[needle_word]])) {
+1513892205703:#  print(assoc_words)
+1513892205704:#}
+1513892205704:}
+1513892235249:print(assoc_words)
+1513892257660:for (i in 1:length(top_words$word)){
+1513892257661:needle_word = String(top_words$word[i])
+1513892257661:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+1513892257662:print(assoc_words[[needle_word]])
+1513892257663:#  <- String(top_words[i,1])
+1513892257663:# print(needle_word)
+1513892257664:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892257665:# print(assoc_words)
+1513892257665:#if(length(assoc_words)) {
+1513892257666:#  print(assoc_words)
+1513892257667:#}
+1513892257667:}
+1513892281722:for (i in 1:length(top_words$word)){
+1513892281725:needle_word = String(top_words$word[i])
+1513892281725:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.01)
+1513892281726:print(length(assoc_words[[needle_word]]))
+1513892281727:#  <- String(top_words[i,1])
+1513892281727:# print(needle_word)
+1513892281728:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892281729:# print(assoc_words)
+1513892281729:#if(length(assoc_words)) {
+1513892281730:#  print(assoc_words)
+1513892281730:#}
+1513892281731:}
+1513892299815:for (i in 1:length(top_words$word)){
+1513892299816:needle_word = String(top_words$word[i])
+1513892299816:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.3)
+1513892299817:print(length(assoc_words[[needle_word]]))
+1513892299817:#  <- String(top_words[i,1])
+1513892299818:# print(needle_word)
+1513892299819:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892299819:# print(assoc_words)
+1513892299820:#if(length(assoc_words)) {
+1513892299821:#  print(assoc_words)
+1513892299821:#}
+1513892299822:}
+1513892313067:for (i in 1:length(top_words$word)){
+1513892313068:needle_word = String(top_words$word[i])
+1513892313069:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.1)
+1513892313070:print(length(assoc_words[[needle_word]]))
+1513892313070:#  <- String(top_words[i,1])
+1513892313071:# print(needle_word)
+1513892313071:# assoc_words <- lapply(findAssocs(dtm, terms = needle_word , corlimit = 0.005), "[", c(1:10))
+1513892313072:# print(assoc_words)
+1513892313072:#if(length(assoc_words)) {
+1513892313073:#  print(assoc_words)
+1513892313074:#}
+1513892313074:}
+1513892400606:for (i in 1:length(top_words$word)){
+1513892400607:needle_word = String(top_words$word[i])
+1513892400608:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892400609:if (length(assoc_words[[needle_word]])>2){
+1513892400609:print(assoc_words[[needle_word]])
+1513892400610:}
+1513892400611:}
+1513892426918:for (i in 1:length(top_words$word)){
+1513892426919:needle_word = String(top_words$word[i])
+1513892426920:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892426921:if (length(assoc_words[[needle_word]])>=1){
+1513892426921:print(assoc_words[[needle_word]])
+1513892426922:}
+1513892426922:}
+1513892503057:for (i in 1:length(top_words$word)){
+1513892503058:needle_word = String(top_words$word[i])
+1513892503059:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892503060:if (length(assoc_words[[needle_word]])>=1){
+1513892503061:print('Связи для слова: '&needle_word&'\n')
+1513892503062:print(assoc_words[[needle_word]])
+1513892503063:}
+1513892503064:}
+1513892574919:for (i in 1:length(top_words$word)){
+1513892574920:needle_word = String(top_words$word[i])
+1513892574921:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892574921:if (length(assoc_words[[needle_word]])>=1){
+1513892574922:print(paste('Связи для слова: ',needle_word, '\n', sep = ''))
+1513892574922:print(assoc_words[[needle_word]])
+1513892574923:}
+1513892574924:}
+1513892638916:# filePath <- "/home/rstudio/romeo.txt"
+1513892638917:filePath <- "/home/rstudio/text4analyse.txt"
+1513892639250:print(getwd())
+1513892639292:text <- readLines(filePath)
+1513892639858:docs <- Corpus(VectorSource(text))
+1513892639893:toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
+1513892639931:docs <- tm_map(docs, toSpace, "/")
+1513892640754:docs <- tm_map(docs, toSpace, "@")
+1513892640786:docs <- tm_map(docs, toSpace, "\\|")
+1513892640808:# Convert the text to lower case
+1513892640808:docs <- tm_map(docs, content_transformer(tolower))
+1513892640847:# Remove numbers
+1513892640848:docs <- tm_map(docs, removeNumbers)
+1513892642218:# Remove english common stopwords
+1513892642218:docs <- tm_map(docs, removeWords, stopwords("english"))
+1513892645976:# Remove your own stop word
+1513892645977:# specify your stopwords as a character vector
+1513892645978:docs <- tm_map(docs, removeWords, c("blabla1", "blabla2"))
+1513892646301:# Remove punctuations
+1513892646301:docs <- tm_map(docs, removePunctuation)
+1513892646357:# Eliminate extra white spaces
+1513892646357:docs <- tm_map(docs, stripWhitespace)
+1513892646688:# Text stemming
+1513892646689:docs <- tm_map(docs, stemDocument)
+1513892647442:dtm <- TermDocumentMatrix(docs)
+1513892665145:m <- as.matrix(dtm)
+1513892665151:v <- sort(rowSums(m),decreasing=TRUE)
+1513892665157:d <- data.frame(word = names(v),freq=v)
+1513892665362:#setup parallel backend to use 8 processors
+1513892665362:cl<-makeCluster(4)
+1513892666581:registerDoParallel(cl)
+1513892666630:top_words <- head(d,30)
+1513892666631:ls<-foreach(top_words$word) %dopar% {
+1513892666632:ls
+1513892666633:}
+1513892684347:top_words <- head(d,30)
+1513892685496:for (i in 1:length(top_words$word)){
+1513892685497:needle_word = String(top_words$word[i])
+1513892685498:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892685498:if (length(assoc_words[[needle_word]])>=1){
+1513892685499:print(paste('Связи для слова: ',needle_word, sep = ''))
+1513892685499:print(assoc_words[[needle_word]])
+1513892685500:}
+1513892685500:}
+1513892744078:top_words <- head(d,30)
+1513892744079:for (i in 1:length(top_words$word)){
+1513892744080:needle_word = String(top_words$word[i])
+1513892744081:assoc_words = findAssocs(dtm, terms = needle_word, corlimit = 0.2)
+1513892744082:if (length(assoc_words[[needle_word]])>=1){
+1513892744083:print(paste('Связи для слова: ',needle_word, sep = ''))
+1513892744083:print(assoc_words[[needle_word]])
+1513892744084:}
+1513892744085:}
+1513892780292:#png("MachineLearningCloud.png", width=12, height=8, units="in", res=300)
+1513892780293:wordcloud_image <- wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+1513892780294:max.words=200, random.order=FALSE, rot.per=0.35,
+1513892780295:colors=brewer.pal(8, "Dark2"))
